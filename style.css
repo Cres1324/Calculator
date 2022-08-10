@@ -1,0 +1,67 @@
+body{
+    background-image: url(./images/calcback.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+.calculator{
+    background-image: url(./images/calc.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.6;
+    border: solid rgba(255, 255, 255, 0.516) 4px;
+    border-radius: 8px;
+    width:400px;
+    height:600px ;
+}
+.screen{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 360px;
+    height: 160px ;
+    margin: 15px 10px;
+    border: solid rgb(59, 91, 91) 3px;
+    border-radius: 8px;
+    background-color: rgb(153, 233, 233);
+    opacity: 0.75;
+    color: rgb(79, 120, 146);
+    font-size: 32px;
+    -webkit-text-stroke: 1px rgb(27, 40, 91);
+}
+.result{
+    display: block;
+    padding: auto;
+    margin: auto 10px 10px auto;
+
+}
+.equation{
+    display: block;
+    margin: 10px auto auto 10px ;
+
+}
+
+.buttons{
+    height:390px;
+    margin: 0px 10px;
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+}
+
+button{
+    margin: 6px;
+    background-color: rgb(114, 133, 95);
+    opacity: 0.9;
+    border: solid gray 2px;
+    border-radius: 8px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+.highlight{
+    background-color: rgb(221, 242, 200);
+
+
+}
