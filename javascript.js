@@ -4,6 +4,7 @@ const equalSign=document.getElementById('equal')
 let dotflag=0;
 let previousnum=NaN;
 let previoustext='';
+
 buttons.forEach(button=>{
     button.addEventListener('mouseover',higlight,false);
     button.addEventListener('mouseleave',removehiglight,false)
@@ -60,8 +61,74 @@ function buttonClicked(){
 
 }
 function equalButtonClicked(){
-    console.log(equations.textContent);
-    equationArray=Array.from(equations.textContent);
-    
+    let numbercount=0;
+    let equationArray=Array.from(equations.textContent);
+    let numbers=[];
+    let signs=[];
+    console.log(equationArray);
+    equationArray.forEach((elem)=>{
+        if(isNaN(elem)&&elem!='.'){
+          signs.push(elem);
+          numbercount++             
+        }
+       else{
+        if(!numbers[numbercount]){
+            numbers[numbercount]=''
+        };
+            numbers[numbercount]+=elem;
+       }
+       console.log(elem)
+    });
+    let result=0;
+    let index;
+    if(signs.length==0){
+        result=numbers[0];
+    }
+    while(signs.length!=0){
+        if(signs.includes("^")){
+            index=signs.indexOf("^");
+            result=Math.pow(Number(numbers[index]),Number(numbers[index+1]))
+            signs.splice(index,1);
+            numbers.splice(index+1,1);
+            numbers[index]=result;
+            continue;
+        }
+        if(signs.includes("*")){
+            index=signs.indexOf("*");
+            result=Number(numbers[index])*Number(numbers[index+1])
+            signs.splice(index,1);
+            numbers.splice(index+1,1);
+            numbers[index]=result;
+            continue;
+        }
+        else if(signs.includes("/")){
+            index=signs.indexOf("/");
+            result=Number(numbers[index])/Number(numbers[index+1])
+            signs.splice(index,1);
+            numbers.splice(index+1,1);
+            numbers[index]=result;
+            continue;
+        };
+        if(signs.includes("+")){
+            index=signs.indexOf("+");
+            result=Number(numbers[index])+Number(numbers[index+1])
+            signs.splice(index,1);
+            numbers.splice(index+1,1);
+            numbers[index]=result;
+            continue;
+        }
+        else if(signs.includes("-")){
+            index=signs.indexOf("-");
+            result=Number(numbers[index])-Number(numbers[index+1])
+            signs.splice(index,1);
+            numbers.splice(index+1,1);
+            numbers[index]=result;
+            continue;
+        };
+        break;
+    }
+    console.log(result)
+    const results=document.querySelector('.result');
+    results.textContent=result;
 
-}
+};
